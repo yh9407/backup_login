@@ -30,10 +30,10 @@ export function login() {
     };
 }
 
-export function loginSuccess(username) {
+export function loginSuccess(email) {
     return {
         type: AUTH_LOGIN_SUCCESS,
-        username
+        email
     };
 }
 
@@ -53,7 +53,7 @@ export function registerRequest(email, nickname, password) {
                 dispatch(registerSuccess());
             }).catch((error) => {
                 //error.response.data.code
-                dispatch(registerFailure());
+                dispatch(registerFailure(error.response.data.code));
             });
     };
 }
@@ -73,7 +73,7 @@ export function registerSuccess() {
 export function registerFailure(error) {
     return {
         type: AUTH_REGISTER_FAILURE,
-        // error
+         error
     };
 }
 

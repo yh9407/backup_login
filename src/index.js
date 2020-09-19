@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App, Home, Login, Register} from './containers';
+import { Home, Login, Register} from './containers';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 // Redux
@@ -16,8 +16,7 @@ ReactDOM.render(<>
         <Provider store={store}>
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/" component={App}/>
-                    <Route path="/home" component={Home}/>
+                    <Route exact path="/" component={Home}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/register" component={Register}/>
                 </Switch>

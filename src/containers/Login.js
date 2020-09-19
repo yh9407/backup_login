@@ -2,6 +2,7 @@ import React from 'react';
 import {Authentication} from '../components';
 import {connect} from 'react-redux';
 import {loginRequest} from '../actions/auth';
+import Header from "../components/Header";
 
 
 class Login extends React.Component {
@@ -11,14 +12,13 @@ class Login extends React.Component {
         this.handleLogin = this.handleLogin.bind(this);
     }
 
-    handleLogin(id, pw) {
-        return this.props.loginRequest(id, pw).then(
+    handleLogin(id ,pw) {
+        return this.props.loginRequest(id,pw).then(
             () => {
                 if (this.props.status === "SUCCESS") {
-                    console.log(this.props.status)
                     let loginData = {
                         isLoggedIn: true,
-                        email: id
+                        email: id,
                     };
 
                     document.cookie = 'key=' + btoa(JSON.stringify(loginData));
@@ -34,9 +34,12 @@ class Login extends React.Component {
     render() {
         return (
             <div>
+
                 <Authentication mode={true} onLogin={this.handleLogin}/>
+                {this.props.children}
+
             </div>
-        );
+    );
     }
 }
 

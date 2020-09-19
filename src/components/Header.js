@@ -1,18 +1,30 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import Authentication from "./Authentication";
 
 class Header extends React.Component {
-
+constructor(props) {
+    super(props);
+    this.state = {
+        open:false,
+    }
+}
+open = () => {
+    this.setState({open:true})
+}
 
     render() {
         const loginButton = (
             <li>
-                <Link to="/login">
-                    <div>
-                        로그인아이콘
-                    </div>
-                </Link>
+
+                    {/*<a onClick={this.open}>*/}
+                    {/*    버튼*/}
+                    {/*</a>*/}
+                    <Link to="/login" >로그인/회원가입</Link>
+
+
             </li>
+
         );
 
         const logoutButton = (
@@ -22,9 +34,21 @@ class Header extends React.Component {
                 </a>
             </li>
         );
-
+        const open = (
+            <>
+            {/*{this.state.open ? <Authentication/> : null}*/}
+            </>
+            )
         return (
+
+
+
             <nav>
+                {/*{console.log(this.props)}*/}
+                {/*{console.log(this.state)}*/}
+                <div>
+                    {open}
+                </div>
                 <div>
                     <Link to="/">
                         Hug Us
